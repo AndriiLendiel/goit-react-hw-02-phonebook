@@ -13,6 +13,7 @@ class ContactForm extends Component {
 const {name, number} = e.target.elements;
 e.preventDefault();
 this.props.addContact(name.value, number.value)
+
   }
 
     render() {

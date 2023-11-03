@@ -22,30 +22,47 @@ addContact = (name,number) => {
     number,
     id: nanoid()
       }
+
+      if(this.state.contacts.some(el => el.name.toLowerCase() === contactData.name.toLowerCase())) {
+      return  alert(`${name} is already in contacts`)
+      }
+  
   this.setState(prevState =>({
     contacts: [...prevState.contacts, contactData]
     
-  }))
+  })
+  
+  )
+
 }
 
 createFilter = (e) => {
-  const {value, name} = e.currentTarget;
-console.log(value, name);
+  const {value} = e.currentTarget;
 this.setState({
   filter: value,
 })
 }
 
 filterByName = () => {
-const normalized = this.state.filter.toLowerCase()
-return this.state.contacts.filter(el => el.name.toLowerCase().includes(normalized))
+const {filter, contacts} = this.state
+const normalized = filter.toLowerCase()
+return contacts.filter(({name}) => name.toLowerCase().includes(normalized))
+}
+
+deleteContact = (contactId) => {
+  this.setState(prevState => ({
+    contacts: prevState.contacts.filter(el => 
+      el.id !== contactId)
+  }))
 }
 
 
 
 
   render() {
+    const {filter} = this.state
 const filteredContacts = this.filterByName()
+
     return (
       <div
         style={{
@@ -59,22 +76,19 @@ const filteredContacts = this.filterByName()
         }}
       >
 <ContactForm 
-
 addContact={this.addContact}
 />
 <Filter 
-value={this.state.filter}
+value={filter}
 onChange={this.createFilter}
 />
 
 <ContactList contacts={filteredContacts}
+onDelete={this.deleteContact}
 
 
 
 />
-<button type="button"
-
->PUT</button>
       </div>
     )}
 
