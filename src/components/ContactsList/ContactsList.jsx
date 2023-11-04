@@ -1,19 +1,21 @@
 import React from "react";
-import { Contact } from "./Contact";
+import { Contact } from "../Contact/Contact";
+import { ContactList1 } from "./ContactList.styled";
+import { Title } from "utils/utils";
 
 
 export const ContactList =({contacts, onDelete}) => {
     return (
         <div>
-            <h2>Phonebook</h2>
-            <ul>
+            <Title>Contacts</Title>
+            <ContactList1>
         {contacts.map(el => (
          <Contact data={el}
 onDelete={onDelete}
 
          />
 ))}
-        </ul>
+        </ContactList1>
         </div>
 
         

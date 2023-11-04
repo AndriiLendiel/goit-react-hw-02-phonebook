@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Title } from "utils/utils";
+import {FormWrapper, Form, FormButton, FormInput, FormLabel } from "./ContactForm.styled";
 class ContactForm extends Component {
     state = {
     name: '',
@@ -19,10 +21,11 @@ this.props.addContact(name.value, number.value)
     render() {
         const {name,number} = this.state;
         return (
-
-            <form onSubmit={this.handleSubmit}>
-            <label> Name 
-            <input
+          <FormWrapper>
+                      <Title>PhoneBook</Title>
+            <Form onSubmit={this.handleSubmit}>
+            <FormLabel> Name 
+            <FormInput
             onChange={this.handleInput}
         type="text"
         name="name"
@@ -31,8 +34,9 @@ this.props.addContact(name.value, number.value)
         required
         value={name}
       />
-      <label>Tel 
-      <input
+</FormLabel>
+      <FormLabel>Tel 
+      <FormInput
         type="tel"
         name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -41,11 +45,13 @@ this.props.addContact(name.value, number.value)
         onChange={this.handleInput}
         value={number}
       />
-      </label>
-      <button type="submit"
-      >Add contact</button>
-      </label>
-      </form>
+      </FormLabel>
+      <FormButton type="submit"
+      >Add contact</FormButton>
+
+      </Form>
+          </FormWrapper>
+
         )
     }
 }

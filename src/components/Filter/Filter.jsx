@@ -1,20 +1,20 @@
 import React from "react";
-
+import { FilterWrapper,FilterLabel,FilterInput } from "./Filter.styled";
 export const Filter =({onChange, value})=> {
 
 
     return (
-        <div>
-        <h2>Find contacts by name </h2>
-                <input type="text"
+        <FilterWrapper>
+
+        <FilterLabel>Find contacts by name
+        <FilterInput type="text"
                 name="filter"
                 onChange={onChange}
                 value={value}
-
-
-
                 />
-        </div>
+        </FilterLabel>
+
+        </FilterWrapper>
         
         
             )
