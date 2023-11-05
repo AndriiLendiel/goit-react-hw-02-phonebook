@@ -16,6 +16,8 @@ const {name, number} = e.target.elements;
 e.preventDefault();
 this.props.addContact(name.value, number.value)
 
+this.setState({name: '',number: '',})
+
   }
 
     render() {
