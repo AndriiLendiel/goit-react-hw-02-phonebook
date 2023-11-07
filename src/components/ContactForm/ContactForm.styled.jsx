@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
 import {theme} from '../../utils/theme'
+import { Form, Field} from "formik";
 
+
+export const ErrorText = styled.p`
+font-size: 24px;
+color: red;
+`
 
 export const FormWrapper = styled.div`
 width: 100%;
@@ -8,7 +14,7 @@ padding: 5px;
 margin-top: ${theme.values.blockMargin};
 `
 
-export const Form = styled.form`
+export const MainForm = styled(Form)`
 display: grid;
 grid-template-columns: 1fr 1fr;
 justify-items: center;
@@ -17,11 +23,11 @@ justify-items: center;
 
 export const FormLabel = styled.label`
 font-size: 36px;
-color: ${theme.colors.textColor}
+color: ${theme.colors.textColor};
 
 `
 
-export const FormInput = styled.input`
+export const FormInput = styled(Field)`
 height: 25px;
 font-size: 24px;
 background-color: grey;
